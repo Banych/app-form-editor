@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
-import React, { Fragment, useContext } from "react";
-import { Form, List, Segment } from "semantic-ui-react";
+import React, { useContext } from "react";
+import { Form, Segment } from "semantic-ui-react";
 import ElementStore from "../Store/ElementStore";
 import ElementView from "./ElementView";
 

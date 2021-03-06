@@ -1,20 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Fragment } from "react";
-import {
-  Button,
-  ButtonGroup,
-  Container,
-  Grid,
-  Menu,
-  Radio,
-  Segment,
-} from "semantic-ui-react";
+import { Button, ButtonGroup, Container, Grid, Menu } from "semantic-ui-react";
 import { observer } from "mobx-react-lite";
-import Element from "../Models/Element";
 import FormEditorDesk from "./FormEditorDesk";
 import FormEditorToolBox from "./FormEditorToolBox";
-import EInput from "../Models/Input";
 import ElementStore from "../Store/ElementStore";
+import { ReactComponent as Logo2 } from "../Assets/logo2.svg";
 
 import "semantic-ui-css/semantic.min.css";
 import FormView from "./FormView";
@@ -27,13 +18,20 @@ const FormEditor = () => {
     <Fragment>
       <Menu fixed="top" fluid>
         <Container>
-          <Menu.Item active>Form editor</Menu.Item>
+          <Menu.Item active>
+            <a href="/">
+              <div style={{ width: "190px" }}>
+                {/* <img src={logo2} alt="Logo Form Edit" /> */}
+                <Logo2 fill="blue" />
+              </div>
+            </a>
+          </Menu.Item>
           <Menu.Item>
             <ButtonGroup compact>
-              <Button primary={editFormMode} onClick={enableEditMode}>
+              <Button secondary={editFormMode} onClick={enableEditMode}>
                 Editor
               </Button>
-              <Button primary={!editFormMode} onClick={disableEditMode}>
+              <Button secondary={!editFormMode} onClick={disableEditMode}>
                 Preview
               </Button>
             </ButtonGroup>

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
-import React, { Fragment } from "react";
+import React from "react";
 import { useContext } from "react";
-import { Button, Form, Header, Input, List } from "semantic-ui-react";
+import { Button, Form, Header, Icon, List, Segment } from "semantic-ui-react";
 import ElementStore from "../Store/ElementStore";
 
 const FormEditorToolBox = () => {
@@ -12,7 +12,7 @@ const FormEditorToolBox = () => {
     setLabelSubmitButton,
   } = elementStore;
   return (
-    <Fragment>
+    <Segment>
       <Header size="large">Toolbox</Header>
       <List>
         <List.Item>
@@ -22,6 +22,7 @@ const FormEditorToolBox = () => {
             onClick={() => addNewElement("input")}
             style={{ marginBottom: "1em" }}
           >
+            <Icon name="font" />
             Add input
           </Button>
           <Button
@@ -30,6 +31,7 @@ const FormEditorToolBox = () => {
             onClick={() => addNewElement("select")}
             style={{ marginBottom: "1em" }}
           >
+            <Icon name="dropdown" />
             Add select
           </Button>
           <Button
@@ -38,6 +40,7 @@ const FormEditorToolBox = () => {
             onClick={() => addNewElement("checkbox")}
             style={{ marginBottom: "1em" }}
           >
+            <Icon name="check square" />
             Add checkbox
           </Button>
           <Form>
@@ -51,7 +54,7 @@ const FormEditorToolBox = () => {
           </Form>
         </List.Item>
       </List>
-    </Fragment>
+    </Segment>
   );
 };
 

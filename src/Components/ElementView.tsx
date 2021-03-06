@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
-import React, { FC, Fragment } from "react";
-import { Form, Segment } from "semantic-ui-react";
-import ECheckbox from "../Models/Checkbox";
+import React, { Fragment } from "react";
+import { Form } from "semantic-ui-react";
 import Element from "../Models/Element";
 import EInput from "../Models/Input";
 import ESelect from "../Models/Select";

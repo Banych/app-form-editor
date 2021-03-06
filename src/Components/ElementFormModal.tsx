@@ -1,40 +1,28 @@
 import { observer } from "mobx-react-lite";
-import React, { Fragment, SyntheticEvent, useEffect, useState } from "react";
+import React, { Fragment, SyntheticEvent } from "react";
 import { useContext } from "react";
 import {
   Button,
-  ButtonGroup,
   Form,
   Grid,
   GridColumn,
-  Icon,
   Modal,
   Segment,
   Select,
 } from "semantic-ui-react";
-import Element from "../Models/Element";
 import EInput from "../Models/Input";
 import ESelect from "../Models/Select";
 import ElementStore from "../Store/ElementStore";
 import { enumToArray, ETypes, InputTypes } from "../util";
-import EditableInput from "./Editable/EInput/EditableInput";
-import { toJS } from "mobx";
-import cloneDeep from "lodash.clonedeep";
 import { EOption } from "../Models/Option";
-import ECheckbox from "../Models/Checkbox";
 
 const ElementFormModal = () => {
   const elementStore = useContext(ElementStore);
   const {
     editingElement,
-    editElementMode,
-    clearEditingElement,
     setEditingElement,
-    enableEditElementMode,
     disableEditElementMode,
     createNewOption,
-    addNewOption,
-    removeOption,
     editOptionProp,
   } = elementStore;
 
@@ -122,7 +110,7 @@ const ElementFormModal = () => {
             </Form.Field>
           )}
           {editingElement?.hasOwnProperty("value") &&
-          (editingElement.etype == ETypes.ECheckbox) ? (
+          editingElement.etype == ETypes.ECheckbox ? (
             <Form.Field>
               <label>Default value</label>
               <input
@@ -181,6 +169,9 @@ const ElementFormModal = () => {
               <label>
                 Options - count: {(editingElement as ESelect).options.length}
               </label>
+              <Button onClick={() => handleSelectAddOption("options")}>
+                Add option
+              </Button>
               {(editingElement as ESelect).options.length > 0 && (
                 <Segment>
                   {(editingElement as ESelect).options.map((opt) => (
@@ -226,9 +217,6 @@ const ElementFormModal = () => {
                   ))}
                 </Segment>
               )}
-              <Button onClick={() => handleSelectAddOption("options")}>
-                Add option
-              </Button>
             </Form.Field>
           )}
         </Form>
